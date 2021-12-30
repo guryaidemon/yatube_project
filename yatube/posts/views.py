@@ -1,13 +1,16 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
     """Главная страница."""
-    
-    return HttpResponse('Главная страница')
+
+    template = 'posts/index.html'
+    return render(request, template)
 
 
-def group_posts(request, slug):
+def group_posts(request):
     """Страница группы"""
     
-    return HttpResponse(f'Страница группы {slug}')
+    template = 'posts/group_list.html'
+    return render(request, template)
