@@ -37,6 +37,7 @@ def group_posts(request, slug):
     context = {
         # В словарь можно передать переменную
         'title': title,
+        'group': group,
         'posts': posts,
     }
     # Третьим параметром передаём словарь context
