@@ -12,3 +12,23 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='posts'
     )
+    group = models.ForeignKey(
+        'Group',
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
+
+
+class Group(models.Model):
+    title = models.CharField()
+    slug = models.CharField()
+    description = models.TextField()
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='posts'
+    )
+
+    def __str__(self):
+        return self.title
