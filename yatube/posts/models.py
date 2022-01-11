@@ -21,14 +21,9 @@ class Post(models.Model):
 
 
 class Group(models.Model):
-    title = models.CharField()
-    slug = models.CharField()
+    title = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
     description = models.TextField()
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='posts'
-    )
 
     def __str__(self):
         return self.title
