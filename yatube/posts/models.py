@@ -10,27 +10,30 @@ class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='posts'
+        related_name='posts',
     )
     group = models.ForeignKey(
         'Group',
         blank=True,
         null=True,
-        on_delete=models.CASCADE
+        on_delete=models.SET_NULL,
+        related_name='posts',
     )
+
+    class Meta:
+        ordering = ('-pub_date',)
 
 
 class Group(models.Model):
     title = models.CharField(
-        max_length=100,
+        max_length=200,
         db_index=True,
-        verbose_name="Название группы"
+        verbose_name="Название группы",
     )
     slug = models.SlugField(
         max_length=255,
         unique=True,
-        db_index=True,
-        verbose_name="Адрес группы"
+        verbose_name="Адрес группы",
     )
     description = models.TextField(verbose_name="Описание группы")
 
